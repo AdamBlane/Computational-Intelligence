@@ -13,12 +13,25 @@ public class Parameters {
 	 * You may add other Parameters as required to this class 
 	 * 
 	 */
+	
+	
 	private static int numHidden = 5;	
 	private static int numGenes = calculateNumGenes();
 	public static double minGene = -3; // specifies minimum and maximum weight values 
 	public static double maxGene = +3;
 		
-	public static int popSize = 40;
+	public static int popSize = 160;
+	
+	
+	public static int tSize = 20; //size of the tournament
+	
+
+	public static double uniformProb = 0.5;
+	public static int numPoints = 3;
+	
+	public static int numReplacements = 40;
+	public static int rtSize = 20;
+	
 	public static int maxEvaluations = 20000;
 	
 	// Parameters for mutation 
@@ -27,6 +40,7 @@ public class Parameters {
 	public static double mutateRate = 0.01; // mutation rate for mutation operator
 	public static double mutateChange = 0.05; // delta change for mutation operator
 	
+	public static int numTests = 10;
 	//Random number generator used throughout the application
 	public static long seed = System.currentTimeMillis();
 	public static Random random = new Random(seed);
