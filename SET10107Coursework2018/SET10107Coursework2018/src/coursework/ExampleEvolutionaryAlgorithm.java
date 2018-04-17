@@ -27,8 +27,8 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork
 	
 	public static Selection Selectyion = Selection.Tournament;
 	public static int totalFitness = 0; 
-	public static Crossover CrossOver = Crossover.OnePoint;
-	public static Replacement Replace = Replacement.Tournament;
+	public static Crossover CrossOver = Crossover.Uniform;
+	public static Replacement Replace = Replacement.Random;
 	
 	int firstCheck = -1;
 
