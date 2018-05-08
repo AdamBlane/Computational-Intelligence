@@ -23,7 +23,7 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork
 
 	public enum Crossover{OnePoint,NPoint,Clone,Uniform,}
 
-	public enum Replacement{Random,Tournament,Worst}
+	public enum Replacement{Random,Tournament}
 	
 	public static Selection Selectyion = Selection.Tournament;
 	public static int totalFitness = 0; 
@@ -396,15 +396,6 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork
 		population = newPop;
 	}
 
-	private void replaceWorst(ArrayList<Individual> individuals)
-	{
-		for (Individual individual : individuals)
-		{
-			int idx = getWorstIndex();
-			population.set(idx, individual);
-		}
-	}
-
 	private void replace(ArrayList<Individual> individuals)
 	{
 		switch (Replace)
@@ -414,9 +405,6 @@ public class ExampleEvolutionaryAlgorithm extends NeuralNetwork
 				break;
 			case Tournament:
 				tournamentReplace(individuals);
-				break;
-			case Worst:
-				replaceWorst(individuals);
 				break;
 		}
 	}

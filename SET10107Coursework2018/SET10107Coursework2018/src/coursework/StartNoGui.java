@@ -27,53 +27,30 @@ public class StartNoGui
 		 * Set the parameters here or directly in the Parameters Class. Note you should
 		 * use a maximum of 20,0000 evaluations for your experiments
 		 */
-
-		PrintWriter pw = new PrintWriter(new File("Test.csv"));
-		StringBuilder sb = new StringBuilder();
-		sb.append(Parameters.printParams());
-		sb.append('\n');
-		sb.append("Test");
-		sb.append('\t');
-		sb.append("Training Fitness");
-		sb.append('\t');
-		sb.append("Test Fitness");
-		sb.append('\n');
-
-		for (int i = 0; i < Parameters.numTests; i++)
-		{
-			sb.append(i);
-			sb.append('\t');
 			
 			// Set the data set for training
-			Parameters.setDataSet(DataSet.Training);
+		Parameters.setDataSet(DataSet.Training);
 
-			// Create a new Neural Network Trainer Using the above parameters
-			NeuralNetwork nn = new ExampleEvolutionaryAlgorithm();
+		// Create a new Neural Network Trainer Using the above parameters
+		NeuralNetwork nn = new ExampleEvolutionaryAlgorithm();
 
-			// train the neural net (Go and make a coffee)
-			nn.run();
+		// train the neural net (Go and make a coffee)
+		nn.run();
 
-			/*
-			 * Print out the best weights found (these will have been saved to disk in the
-			 * project default directory)
-			 */
-			System.out.println(nn.best);
-			double trainFitness = Fitness.evaluate(nn);
-			System.out.println("Fitness on " + Parameters.getDataSet() + " " + trainFitness);
-			sb.append(trainFitness);
-			sb.append('\t');
-			/**
-			 * We now need to test the trained network on the unseen test Set
-			 */
-			Parameters.setDataSet(DataSet.Test);
-			double testFitness = Fitness.evaluate(nn);
-			System.out.println("Fitness on " + Parameters.getDataSet() + " " + testFitness);
+		/*
+		 * Print out the best weights found (these will have been saved to disk in the
+		 * project default directory)
+		 */
+		System.out.println(nn.best);
+		double trainFitness = Fitness.evaluate(nn);
+		System.out.println("Fitness on " + Parameters.getDataSet() + " " + trainFitness);
+		/**
+		 * We now need to test the trained network on the unseen test Set
+		 */
+		Parameters.setDataSet(DataSet.Test);
+		double testFitness = Fitness.evaluate(nn);
+		System.out.println("Fitness on " + Parameters.getDataSet() + " " + testFitness);
 
-			sb.append(testFitness);
-			sb.append('\n');
-		}
-		pw.write(sb.toString());
-		pw.close();
 		/**
 		 * Or We can reload the NN from the file generated during training and test it
 		 * on a data set We can supply a filename or null to open a file dialog Note
